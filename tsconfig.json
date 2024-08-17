@@ -16,26 +16,13 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
     "paths": {
-      "@environments/*": [
-        "./src/environments/*"
-      ],
-      "@shared/*": [
-        "./src/app/shared/*"
-      ],
-      "@core/*": [
-        "./src/app/core/*"
-      ],
-      "@auth/*": [
-        "./src/app/auth/*"
-      ],
-      "@spartan-ng/ui-formfield-helm": [
-        "./src/app/shared/atoms/ui-formfield-helm/src/index.ts"
-      ]
+      "@environments/*": ["./src/environments/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@admin/*": ["./src/app/admin/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@auth/*": ["./src/app/auth/*"]
     }
   },
   "angularCompilerOptions": {

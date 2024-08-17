@@ -3,3 +3,7 @@
   @import 'tailwindcss/components';
 }
 @import 'tailwindcss/utilities';
+
+body {
+  @apply h-screen w-screen flex flex-col bg-body text-foreground;
+}

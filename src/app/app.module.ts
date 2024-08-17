@@ -1,6 +1,7 @@
-import { icons, LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule, icons } from 'lucide-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '@shared/shared.module';
+import { AdminModule } from '@admin/admin.module';
 import { CoreModule } from '@core/core.module';
 import { AuthModule } from '@auth/auth.module';
 import { NgModule } from '@angular/core';
@@ -18,10 +19,10 @@ const GLOBAL_MODULES = [LucideAngularModule.pick(icons)];
     BrowserModule,
     SharedModule,
     SharedModule,
+    AdminModule,
     AuthModule,
     CoreModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
