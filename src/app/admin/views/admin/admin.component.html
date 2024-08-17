@@ -1,5 +1,5 @@
 <div class="min-h-full">
-  <nav class="border-b bg-background">
+  <nav class="border-b border-white/15 bg-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 justify-between">
         <div class="flex">
@@ -10,18 +10,20 @@
           </div>
           <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
             <a
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
+              class="inline-flex items-center gap-2 border-b-2 border-transparent px-3 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
               routerLinkActive="!border-primary !text-white"
               [routerLink]="['/', 'admin', 'list']"
             >
               Dashboard
+              <hlm-icon name="List" />
             </a>
             <a
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
+              class="inline-flex items-center gap-2 border-b-2 border-transparent px-3 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
               routerLinkActive="!border-primary !text-white"
               [routerLink]="['/', 'admin', 'create']"
             >
-              <hlm-icon name="Plus" />
+              Add
+              <hlm-icon name="FilePlus" />
             </a>
           </div>
         </div>
@@ -35,7 +37,9 @@
   </nav>
 
   <div class="py-10">
-    <main class="container m-auto rounded-xl bg-background">
+    <main
+      class="container m-auto rounded bg-white/10 shadow-lg backdrop-blur-lg"
+    >
       <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <router-outlet />
       </div>

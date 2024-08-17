@@ -7,7 +7,7 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply h-screen w-screen flex flex-col bg-body text-foreground overflow-x-hidden;
+  @apply h-screen w-screen flex flex-col text-foreground overflow-x-hidden;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
