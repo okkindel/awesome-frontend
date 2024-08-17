@@ -1,3 +1,5 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
 @layer tailwindcss {
   @import 'tailwindcss/base';
   @import 'tailwindcss/components';
@@ -5,5 +7,17 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply h-screen w-screen flex flex-col bg-body text-foreground;
+  @apply h-screen w-screen flex flex-col bg-body text-foreground overflow-x-hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-foreground rounded-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-sm;
+  }
 }

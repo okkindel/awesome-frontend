@@ -25,7 +25,8 @@ export const spinnerVariants = cva('inline-block', {
 export type SpinnerVariants = VariantProps<typeof spinnerVariants>;
 
 @Component({
-  selector: 'front-spinner',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'hlm-spinner',
   standalone: true,
   host: {
     '[class]': '_computedClass()',

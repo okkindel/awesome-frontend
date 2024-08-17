@@ -14,33 +14,33 @@
 
       <div class="mt-10">
         <form class="space-y-6" [formGroup]="form" (ngSubmit)="login()">
-          <front-form-field>
-            <label for="email" frontLabel>Email address</label>
+          <hlm-form-field>
+            <label for="email" hlmLabel>Email address</label>
             <input
               formControlName="email"
               class="w-full"
               name="email"
               type="email"
-              frontInput
+              hlmInput
               id="email"
               required
             />
-          </front-form-field>
+          </hlm-form-field>
 
-          <front-form-field>
-            <label for="password" frontLabel>Password</label>
+          <hlm-form-field>
+            <label for="password" hlmLabel>Password</label>
             <input
               formControlName="password"
               name="password"
               type="password"
               class="w-full"
               id="password"
-              frontInput
+              hlmInput
               required
             />
-          </front-form-field>
+          </hlm-form-field>
 
-          <button type="submit" frontBtn [disabled]="!form.valid">
+          <button type="submit" hlmButton [disabled]="!form.valid">
             Sign in
           </button>
         </form>

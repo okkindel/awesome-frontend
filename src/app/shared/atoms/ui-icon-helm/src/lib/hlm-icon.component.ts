@@ -27,7 +27,8 @@ export const iconVariants = cva('inline-flex', {
 export type IconName = keyof typeof icons;
 
 @Component({
-  selector: 'front-icon',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'hlm-icon',
   standalone: true,
   imports: [LucideAngularModule],
   encapsulation: ViewEncapsulation.None,

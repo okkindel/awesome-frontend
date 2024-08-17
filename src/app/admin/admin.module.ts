@@ -1,4 +1,5 @@
 import { SharedModule } from '@shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {
@@ -11,7 +12,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 const COMPONENTS = [AdminComponent, AdminListComponent, AdminCreateComponent];
 
 @NgModule({
-  imports: [SharedModule, AdminRoutingModule],
+  imports: [SharedModule, AdminRoutingModule, ReactiveFormsModule],
 
   declarations: [...COMPONENTS],
 })

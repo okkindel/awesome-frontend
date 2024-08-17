@@ -21,14 +21,14 @@
               routerLinkActive="!border-primary !text-white"
               [routerLink]="['/', 'admin', 'create']"
             >
-              <front-icon name="Plus" />
+              <hlm-icon name="Plus" />
             </a>
           </div>
         </div>
         <div class="ml-6 flex items-center gap-4">
           @let user = user$ | async;
           {{ user?.name }}
-          <button frontBtn (click)="logout()">Log out</button>
+          <button hlmButton (click)="logout()">Log out</button>
         </div>
       </div>
     </div>

@@ -11,7 +11,8 @@ export const inputErrorVariants = cva('text-sm font-medium text-destructive', {
 export type InputErrorVariants = VariantProps<typeof inputErrorVariants>;
 
 @Directive({
-  selector: '[frontInputError]',
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: '[hlmInputError]',
   standalone: true,
   host: {
     '[class]': '_computedClass()',

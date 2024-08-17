@@ -1,11 +1,12 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AppwriteService, UserService } from './services';
+import { AppwriteService, ElementsService, UserService } from './services';
 
 @NgModule({
   providers: [
     AppwriteService,
+    ElementsService,
     UserService,
     {
       provide: APP_INITIALIZER,

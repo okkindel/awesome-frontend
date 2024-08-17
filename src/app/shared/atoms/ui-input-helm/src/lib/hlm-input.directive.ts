@@ -43,7 +43,8 @@ export const inputVariants = cva(
 type InputVariants = VariantProps<typeof inputVariants>;
 
 @Directive({
-  selector: '[frontInput]',
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: '[hlmInput]',
   standalone: true,
   host: {
     '[class]': '_computedClass()',

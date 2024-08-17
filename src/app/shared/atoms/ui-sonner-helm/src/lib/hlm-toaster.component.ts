@@ -8,7 +8,8 @@ import {
 import { NgxSonnerToaster, ToasterProps } from 'ngx-sonner';
 
 @Component({
-  selector: 'front-toaster',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'hlm-toaster',
   standalone: true,
   imports: [NgxSonnerToaster],
   template: `

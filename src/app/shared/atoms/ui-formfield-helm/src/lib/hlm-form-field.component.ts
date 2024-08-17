@@ -11,16 +11,17 @@ import { BrnFormFieldControl } from '@spartan-ng/ui-form-field-brain';
 import { HlmErrorDirective } from './hlm-error.directive';
 
 @Component({
-  selector: 'front-form-field',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'hlm-form-field',
   template: `
     <ng-content></ng-content>
 
     @switch (hasDisplayedMessage()) {
       @case ('error') {
-        <ng-content select="frontError"></ng-content>
+        <ng-content select="hlmError"></ng-content>
       }
       @default {
-        <ng-content select="frontHint"></ng-content>
+        <ng-content select="hlmHint"></ng-content>
       }
     }
   `,

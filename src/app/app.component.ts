@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     class: 'h-full',
   },
   template: `
-    <front-toaster />
+    <hlm-toaster />
     <router-outlet />
   `,
 })

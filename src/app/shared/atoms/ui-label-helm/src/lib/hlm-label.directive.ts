@@ -38,7 +38,8 @@ export const labelVariants = cva(
 export type LabelVariants = VariantProps<typeof labelVariants>;
 
 @Directive({
-  selector: '[frontLabel]',
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: '[hlmLabel]',
   standalone: true,
   hostDirectives: [
     {
