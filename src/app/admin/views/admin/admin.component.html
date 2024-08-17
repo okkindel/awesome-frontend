@@ -1,0 +1,44 @@
+<div class="min-h-full">
+  <nav class="border-b bg-background">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 justify-between">
+        <div class="flex">
+          <div class="flex shrink-0 items-center">
+            <a [routerLink]="['/']">
+              <img class="block h-8 w-auto" src="assets/logo.png" />
+            </a>
+          </div>
+          <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+            <a
+              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
+              routerLinkActive="!border-primary !text-white"
+              [routerLink]="['/', 'admin', 'list']"
+            >
+              Dashboard
+            </a>
+            <a
+              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
+              routerLinkActive="!border-primary !text-white"
+              [routerLink]="['/', 'admin', 'create']"
+            >
+              <front-icon name="Plus" />
+            </a>
+          </div>
+        </div>
+        <div class="ml-6 flex items-center gap-4">
+          @let user = user$ | async;
+          {{ user?.name }}
+          <button frontBtn (click)="logout()">Log out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="py-10">
+    <main class="container m-auto rounded-xl bg-background">
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+</div>

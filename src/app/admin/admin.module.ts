@@ -1,10 +1,14 @@
 import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 
+import {
+  AdminCreateComponent,
+  AdminListComponent,
+  AdminComponent,
+} from './views';
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminComponent } from './views';
 
-const COMPONENTS = [AdminComponent];
+const COMPONENTS = [AdminComponent, AdminListComponent, AdminCreateComponent];
 
 @NgModule({
   imports: [SharedModule, AdminRoutingModule],

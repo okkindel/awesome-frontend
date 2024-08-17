@@ -1,6 +1,6 @@
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Component, inject } from '@angular/core';
-import { UserService } from '@shared/services';
+import { UserService } from '@api/services';
 import { Router } from '@angular/router';
 import { toast } from 'ngx-sonner';
 

@@ -22,7 +22,8 @@
       "@shared/*": ["./src/app/shared/*"],
       "@admin/*": ["./src/app/admin/*"],
       "@core/*": ["./src/app/core/*"],
-      "@auth/*": ["./src/app/auth/*"]
+      "@auth/*": ["./src/app/auth/*"],
+      "@api/*": ["./src/app/api/*"]
     }
   },
   "angularCompilerOptions": {

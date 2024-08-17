@@ -1,5 +1,6 @@
-import { TypewriterService, UserService } from '@shared/services';
+import { TypewriterService } from '@shared/services';
 import { Component, inject } from '@angular/core';
+import { UserService } from '@api/services';
 
 @Component({
   templateUrl: './home.component.html',

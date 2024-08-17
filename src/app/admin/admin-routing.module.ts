@@ -1,19 +1,39 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule, inject } from '@angular/core';
+import { Observable, map } from 'rxjs';
 
-import { AppwriteService } from './../shared/services/appwrite.service';
-import { AdminComponent } from './views';
+import {
+  AdminCreateComponent,
+  AdminListComponent,
+  AdminComponent,
+} from './views';
+import { UserService } from '../api/services';
 
 const routes: Routes = [
   {
     canActivate: [
-      (): Promise<boolean> => {
-        const service = inject(AppwriteService);
-        return service.account.get().then(Boolean);
+      (): Observable<boolean> => {
+        const service = inject(UserService);
+        return service.user$.pipe(map((user) => !!user));
       },
     ],
     path: 'admin',
     component: AdminComponent,
+    children: [
+      {
+        path: 'list',
+        component: AdminListComponent,
+      },
+      {
+        path: 'create',
+        component: AdminCreateComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 

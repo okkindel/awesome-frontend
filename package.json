@@ -25,6 +25,7 @@
     "@angular/router": "^18.1.0",
     "@ng-icons/core": "^25.1.0",
     "@ng-icons/lucide": "^26.3.0",
+    "@ngxpert/avvvatars": "^1.0.0",
     "@spartan-ng/ui-accordion-brain": "0.0.1-alpha.353",
     "@spartan-ng/ui-alertdialog-brain": "0.0.1-alpha.353",
     "@spartan-ng/ui-avatar-brain": "0.0.1-alpha.353",
