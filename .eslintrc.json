@@ -1,0 +1,81 @@
+{
+  "root": true,
+  "ignorePatterns": ["src/app/shared/models/codegen/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["prettier", "perfectionist"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:perfectionist/recommended-line-length",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:tailwindcss/recommended"
+      ],
+      "rules": {
+        // -------- perfectionist rules --------
+        "perfectionist/sort-named-imports": "warn",
+        "perfectionist/sort-named-exports": "warn",
+        "perfectionist/sort-interfaces": "off",
+        "perfectionist/sort-exports": "warn",
+        "perfectionist/sort-imports": "warn",
+        "perfectionist/sort-objects": "off",
+        "perfectionist/sort-enums": "warn",
+        "perfectionist/sort-classes": "off",
+        // -------- angular-eslint rules --------
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@angular-eslint/directive-selector": [
+          "error",
+          { "type": "attribute", "prefix": "front", "style": "camelCase" }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          { "type": "element", "prefix": "front", "style": "kebab-case" }
+        ],
+        "@angular-eslint/no-host-metadata-property": "off",
+        // -------- typescript-eslint rules --------
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          { "overrides": { "constructors": "no-public" } }
+        ],
+        // -------- prettier rules --------
+        "prettier/prettier": "warn",
+        // -------- eslint rules --------
+        "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
+        "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+        "no-extra-boolean-cast": "off",
+        "prefer-const": "warn",
+        "no-eq-null": "warn",
+        "eqeqeq": "warn",
+        "no-var": "warn"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:tailwindcss/recommended"
+      ],
+      "rules": {
+        "tailwindcss/no-custom-classname": "off"
+      }
+    }
+  ]
+}
