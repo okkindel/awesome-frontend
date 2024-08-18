@@ -7,10 +7,10 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply text-foreground overflow-x-hidden;
+  @apply text-foreground;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    @apply w-2;
   }
 
   &::-webkit-scrollbar-track {
@@ -18,6 +18,6 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-sm;
+    @apply bg-accent rounded-sm cursor-pointer;
   }
 }
