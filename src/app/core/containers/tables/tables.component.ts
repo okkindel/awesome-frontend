@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { LibraryType, Library, DTO } from '@api/models';
+import { LibraryType, Library, Dto } from '@api/models';
 import { DatabaseService } from '@api/services';
 import { Observable, map, tap } from 'rxjs';
 import { Query } from 'appwrite';
@@ -64,7 +64,7 @@ export class TablesComponent {
   public keyValSort = (_a: { key: string }, _b: { key: string }): number => 0;
   public isLoaded = signal<boolean>(false);
 
-  public readonly tablesList$: Observable<Record<LibraryType, DTO<Library>[]>> =
+  public readonly tablesList$: Observable<Record<LibraryType, Dto<Library>[]>> =
     this._databaseService.list('library', [Query.limit(1000)]).pipe(
       map((list) => {
         const elements = list.documents
@@ -73,11 +73,11 @@ export class TablesComponent {
 
         const types = Object.values(LibraryType);
         return types.reduce(
-          (acc: Record<LibraryType, DTO<Library>[]>, type) => {
+          (acc: Record<LibraryType, Dto<Library>[]>, type) => {
             acc[type] = elements.filter((doc) => doc.type === type);
             return acc;
           },
-          {} as Record<LibraryType, DTO<Library>[]>,
+          {} as Record<LibraryType, Dto<Library>[]>,
         );
       }),
       tap(() => this.isLoaded.set(true)),

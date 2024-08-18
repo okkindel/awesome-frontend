@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { LibraryType, Library, DTO } from '@api/models';
+import { LibraryType, Library, Dto } from '@api/models';
 import { DatabaseService } from '@api/services';
 import { Query } from 'appwrite';
 
@@ -14,7 +14,7 @@ export class AdminListComponent implements OnInit {
   private readonly _databaseService = inject(DatabaseService);
 
   public isLoaded = signal<boolean>(false);
-  public elements: DTO<Library>[] = [];
+  public elements: Dto<Library>[] = [];
 
   public ngOnInit(): void {
     this._fetchElements();
