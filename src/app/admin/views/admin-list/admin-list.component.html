@@ -1,78 +1,71 @@
-@if (isLoaded()) {
-  <brn-table
-    hlmTable
-    class="mt-4 block rounded-md border border-border"
-    [displayedColumns]="displayedColumns"
-    [dataSource]="elements"
-  >
-    <brn-column-def name="icon" class="w-20">
-      <hlm-th truncate *brnHeaderDef>Icon</hlm-th>
-      <hlm-td truncate *brnCellDef="let element">
-        @if (element.icon) {
-          <img [src]="element.icon" class="size-8" />
-        }
-      </hlm-td>
-    </brn-column-def>
+<brn-table
+  hlmTable
+  class="mt-4 block rounded-md border border-border"
+  [displayedColumns]="displayedColumns"
+  [dataSource]="elements"
+>
+  <brn-column-def name="icon" class="w-20">
+    <hlm-th truncate *brnHeaderDef>Icon</hlm-th>
+    <hlm-td truncate *brnCellDef="let element">
+      @if (element.icon) {
+        <img [src]="element.icon" class="size-8" />
+      }
+    </hlm-td>
+  </brn-column-def>
 
-    <brn-column-def name="technology" class="w-40">
-      <hlm-th truncate *brnHeaderDef>Technology</hlm-th>
-      <hlm-td truncate *brnCellDef="let element">
-        {{ element.technology }}
-      </hlm-td>
-    </brn-column-def>
+  <brn-column-def name="technology" class="w-40">
+    <hlm-th truncate *brnHeaderDef>Technology</hlm-th>
+    <hlm-td truncate *brnCellDef="let element">
+      {{ element.technology }}
+    </hlm-td>
+  </brn-column-def>
 
-    <brn-column-def name="name" class="w-64">
-      <hlm-th truncate *brnHeaderDef>Name</hlm-th>
-      <hlm-td truncate *brnCellDef="let element">
-        <span [class.font-semibold]="element.important">
-          {{ element.name }}
-        </span>
-      </hlm-td>
-    </brn-column-def>
+  <brn-column-def name="name" class="w-64">
+    <hlm-th truncate *brnHeaderDef>Name</hlm-th>
+    <hlm-td truncate *brnCellDef="let element">
+      <span [class.font-semibold]="element.important">
+        {{ element.name }}
+      </span>
+    </hlm-td>
+  </brn-column-def>
 
-    <brn-column-def name="description" class="w-96">
-      <hlm-th *brnHeaderDef>Description</hlm-th>
-      <hlm-td *brnCellDef="let element">
-        {{ element.description }}
-      </hlm-td>
-    </brn-column-def>
+  <brn-column-def name="description" class="w-96">
+    <hlm-th *brnHeaderDef>Description</hlm-th>
+    <hlm-td *brnCellDef="let element">
+      {{ element.description }}
+    </hlm-td>
+  </brn-column-def>
 
-    <brn-column-def name="type" class="w-40">
-      <hlm-th truncate *brnHeaderDef>Type</hlm-th>
-      <hlm-td truncate *brnCellDef="let element">
-        {{ element.type }}
-      </hlm-td>
-    </brn-column-def>
+  <brn-column-def name="type" class="w-40">
+    <hlm-th truncate *brnHeaderDef>Type</hlm-th>
+    <hlm-td truncate *brnCellDef="let element">
+      {{ element.type }}
+    </hlm-td>
+  </brn-column-def>
 
-    <brn-column-def name="actions" class="w-40 justify-end">
-      <hlm-th *brnHeaderDef>Actions</hlm-th>
-      <hlm-td *brnCellDef="let element" class="flex gap-2">
-        <button
-          (click)="removeElement(element.$id)"
-          variant="outline"
-          size="icon"
-          hlmButton
-        >
-          <hlm-icon name="Trash" />
-        </button>
-        <button hlmButton size="icon" variant="outline">
-          <hlm-icon name="Pencil" />
-        </button>
-      </hlm-td>
-    </brn-column-def>
+  <brn-column-def name="actions" class="w-40 justify-end">
+    <hlm-th *brnHeaderDef>Actions</hlm-th>
+    <hlm-td *brnCellDef="let element" class="flex gap-2">
+      <button
+        (click)="removeElement(element.$id)"
+        variant="outline"
+        size="icon"
+        hlmButton
+      >
+        <hlm-icon name="Trash" />
+      </button>
+      <button
+        [routerLink]="['/', 'admin', 'update', element.$id]"
+        variant="outline"
+        size="icon"
+        hlmButton
+      >
+        <hlm-icon name="Pencil" />
+      </button>
+    </hlm-td>
+  </brn-column-def>
 
-    <div
-      class="flex items-center justify-center p-20 text-muted-foreground"
-      brnNoDataRow
-    >
-      No data
-    </div>
-  </brn-table>
-} @else {
-  <section class="my-8 grid h-96 grid-cols-4 gap-4">
-    <hlm-skeleton class="size-full" />
-    <hlm-skeleton class="size-full" />
-    <hlm-skeleton class="size-full" />
-    <hlm-skeleton class="size-full" />
-  </section>
-}
+  <div class="flex items-center justify-center p-20" brnNoDataRow>
+    {{ isLoaded() ? 'No data' : 'Loading...' }}
+  </div>
+</brn-table>

@@ -4,12 +4,20 @@ import { NgModule } from '@angular/core';
 
 import {
   AdminCreateComponent,
+  AdminUpdateComponent,
   AdminListComponent,
   AdminComponent,
 } from './views';
 import { AdminRoutingModule } from './admin-routing.module';
+import { ElementFormComponent } from './containers';
 
-const COMPONENTS = [AdminComponent, AdminListComponent, AdminCreateComponent];
+const COMPONENTS = [
+  ElementFormComponent,
+  AdminCreateComponent,
+  AdminUpdateComponent,
+  AdminListComponent,
+  AdminComponent,
+];
 
 @NgModule({
   imports: [SharedModule, AdminRoutingModule, ReactiveFormsModule],

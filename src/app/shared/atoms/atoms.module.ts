@@ -10,6 +10,7 @@ import { HlmButtonModule } from './ui-button-helm/src';
 import { HlmSelectModule } from './ui-select-helm/src';
 import { HlmInputModule } from './ui-input-helm/src';
 import { HlmTableModule } from './ui-table-helm/src';
+import { HlmBadgeModule } from './ui-badge-helm/src';
 import { HlmIconModule } from './ui-icon-helm/src';
 
 const ATOMS = [
@@ -21,6 +22,7 @@ const ATOMS = [
   HlmToasterModule,
   HlmSelectModule,
   HlmButtonModule,
+  HlmBadgeModule,
   HlmInputModule,
   HlmTableModule,
   HlmIconModule,

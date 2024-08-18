@@ -2,7 +2,7 @@ import { TypewriterService } from '@shared/services';
 import { Component, inject } from '@angular/core';
 
 @Component({
-  selector: 'cf-hero',
+  selector: 'cf-home-hero',
   template: `
     <div class="relative flex h-screen">
       <div class="absolute inset-x-0 -top-80 transform-gpu blur-3xl">
@@ -92,7 +92,7 @@ import { Component, inject } from '@angular/core';
     </div>
   `,
 })
-export class HeroComponent {
+export class HomeHeroComponent {
   private readonly _typewriterService = inject(TypewriterService);
 
   private readonly _titles = [

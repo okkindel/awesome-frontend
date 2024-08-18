@@ -1,2 +1,2 @@
-export * from './tables/tables.component';
-export * from './hero/hero.component';
+export * from './home-tables/home-tables.component';
+export * from './home-hero/home-hero.component';

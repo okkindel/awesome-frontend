@@ -5,13 +5,13 @@ import { Observable, map, tap } from 'rxjs';
 import { Query } from 'appwrite';
 
 @Component({
-  selector: 'cf-tables',
+  selector: 'cf-home-tables',
   template: `
-    <main class="container mx-auto pt-8" id="main">
+    <main class="container mx-auto py-8" id="main">
       @if (!isLoaded()) {
         @for (_ of [].constructor(5); track $index) {
           <hlm-skeleton class="h-12 w-40" />
-          <section class="my-8 grid h-96 grid-cols-4 gap-4">
+          <section class="my-8 grid h-96 grid-cols-2 gap-4 lg:grid-cols-4">
             <hlm-skeleton class="size-full" />
             <hlm-skeleton class="size-full" />
             <hlm-skeleton class="size-full" />
@@ -25,19 +25,19 @@ import { Query } from 'appwrite';
         track type.key
       ) {
         <h2 class="text-2xl font-semibold">{{ type.key }}</h2>
-        <hlm-table class="my-8 w-full min-w-[400px]">
+        <hlm-table class="my-8 w-full">
           <hlm-trow>
-            <hlm-th class="w-20"></hlm-th>
-            <hlm-th class="w-64">Name</hlm-th>
-            <hlm-th class="w-40">Technology</hlm-th>
+            <hlm-th class="w-12 lg:w-20"></hlm-th>
+            <hlm-th class="w-32 lg:w-64">Name</hlm-th>
+            <hlm-th class="w-20 lg:w-40">Technology</hlm-th>
             <hlm-th>Description</hlm-th>
           </hlm-trow>
           @for (element of type.value; track element.$id) {
             <hlm-trow>
-              <hlm-td truncate class="w-20">
+              <hlm-td truncate class="w-12 p-2 lg:w-20 lg:p-4">
                 <img [src]="element.icon" class="size-8" />
               </hlm-td>
-              <hlm-td class="w-64">
+              <hlm-td class="w-32 lg:w-64">
                 <a
                   [class.font-semibold]="element.important"
                   [href]="element.url"
@@ -47,8 +47,17 @@ import { Query } from 'appwrite';
                   {{ element.name }}
                 </a>
               </hlm-td>
-              <hlm-td class="w-40">{{ element.technology }}</hlm-td>
-              <hlm-td>
+              <hlm-td class="w-20 lg:w-40">
+                <p
+                  [type]="element.technology"
+                  variant="secondary"
+                  cfTechnologyBadge
+                  hlmBadge
+                >
+                  {{ element.technology }}
+                </p>
+              </hlm-td>
+              <hlm-td class="flex-1">
                 {{ element.description }}
               </hlm-td>
             </hlm-trow>
@@ -58,7 +67,7 @@ import { Query } from 'appwrite';
     </main>
   `,
 })
-export class TablesComponent {
+export class HomeTablesComponent {
   private readonly _databaseService = inject(DatabaseService);
 
   public keyValSort = (_a: { key: string }, _b: { key: string }): number => 0;
