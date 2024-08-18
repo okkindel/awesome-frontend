@@ -11,6 +11,19 @@ export class AdminComponent {
 
   public readonly user$ = this._userService.user$;
 
+  public readonly routes = [
+    {
+      title: 'Dashboard',
+      icon: 'List',
+      link: ['/admin', 'list'],
+    },
+    {
+      title: 'Add',
+      icon: 'FilePlus',
+      link: ['/admin', 'create'],
+    },
+  ];
+
   public logout(): void {
     this._userService.logout().subscribe(() => {
       this._router.navigate(['/']);

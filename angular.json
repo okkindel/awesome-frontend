@@ -27,7 +27,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "front",
+      "prefix": "cf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

@@ -14,7 +14,6 @@ import { hlm } from '@spartan-ng/ui-core';
 import { HlmSelectContentDirective } from './hlm-select-content.directive';
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[hlmSelectLabel], hlm-select-label',
   hostDirectives: [BrnSelectLabelDirective],
   standalone: true,

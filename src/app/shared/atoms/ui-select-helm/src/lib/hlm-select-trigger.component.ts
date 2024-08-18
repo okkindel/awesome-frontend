@@ -40,7 +40,7 @@ export const selectTriggerVariants = cva(
 type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
 
 @Component({
-  selector: 'front-select-trigger, hlm-select-trigger',
+  selector: 'hlm-select-trigger',
   standalone: true,
   imports: [BrnSelectTriggerDirective, HlmIconComponent],
   template: `

@@ -8,7 +8,6 @@ import {
 import { Directive, computed, signal, Input, input } from '@angular/core';
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[hlmSelectContent], hlm-select-content',
   standalone: true,
   host: {

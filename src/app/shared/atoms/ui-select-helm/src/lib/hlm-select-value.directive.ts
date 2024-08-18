@@ -4,9 +4,7 @@ import { Directive, computed, input } from '@angular/core';
 import { hlm } from '@spartan-ng/ui-core';
 
 @Directive({
-  selector:
-    // eslint-disable-next-line @angular-eslint/component-selector, @angular-eslint/directive-selector
-    'hlm-select-value,[hlmSelectValue], brn-select-value[hlm]',
+  selector: 'hlm-select-value,[hlmSelectValue], brn-select-value[hlm]',
   standalone: true,
   host: {
     '[class]': '_computedClass()',

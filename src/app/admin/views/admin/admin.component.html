@@ -9,22 +9,16 @@
             </a>
           </div>
           <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-            <a
-              class="inline-flex items-center gap-2 border-b-2 border-transparent px-3 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
-              routerLinkActive="!border-primary !text-white"
-              [routerLink]="['/', 'admin', 'list']"
-            >
-              Dashboard
-              <hlm-icon name="List" />
-            </a>
-            <a
-              class="inline-flex items-center gap-2 border-b-2 border-transparent px-3 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
-              routerLinkActive="!border-primary !text-white"
-              [routerLink]="['/', 'admin', 'create']"
-            >
-              Add
-              <hlm-icon name="FilePlus" />
-            </a>
+            @for (route of routes; track $index) {
+              <a
+                class="inline-flex items-center gap-2 border-b-2 border-transparent px-3 pt-1 text-sm font-medium text-muted-foreground hover:border-primary hover:text-white"
+                routerLinkActive="!border-primary !text-white"
+                [routerLink]="route.link"
+              >
+                {{ route.title }}
+                <hlm-icon [untypedName]="route.icon" />
+              </a>
+            }
           </div>
         </div>
         <div class="ml-6 flex items-center gap-4">

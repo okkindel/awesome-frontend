@@ -31,11 +31,11 @@
         "@angular-eslint/no-empty-lifecycle-method": "warn",
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "front", "style": "camelCase" }
+          { "type": "attribute", "prefix": ["cf", "hlm"], "style": "camelCase" }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "front", "style": "kebab-case" }
+          { "type": "element", "prefix": ["cf", "hlm"], "style": "kebab-case" }
         ],
         "@angular-eslint/no-host-metadata-property": "off",
         // -------- typescript-eslint rules --------

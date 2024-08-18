@@ -35,7 +35,6 @@ export const buttonVariants = cva(
 export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[hlmButton]',
   standalone: true,
   host: {

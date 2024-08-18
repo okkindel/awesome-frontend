@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ElementsService } from '@api/services';
+import { DatabaseService } from '@api/services';
 
 @Component({
   template: `
@@ -9,7 +9,7 @@ import { ElementsService } from '@api/services';
   `,
 })
 export class AdminListComponent {
-  private readonly _elementsService = inject(ElementsService);
+  private readonly _databaseService = inject(DatabaseService);
 
-  public readonly elements$ = this._elementsService.getElements('library');
+  public readonly elements$ = this._databaseService.getElements('library');
 }

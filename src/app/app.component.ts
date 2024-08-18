@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'front-root',
+  selector: 'cf-root',
   host: {
     class: 'h-full',
   },

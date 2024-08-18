@@ -5,7 +5,6 @@ import { Directive, computed, input } from '@angular/core';
 import { hlm } from '@spartan-ng/ui-core';
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[hlmSelectGroup], hlm-select-group',
   hostDirectives: [BrnSelectGroupDirective],
   standalone: true,

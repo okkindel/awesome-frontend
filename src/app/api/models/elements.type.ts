@@ -12,4 +12,5 @@ export const ElementsDictionary = {
 
 export type Collection = keyof typeof ElementsDictionary;
 
-export type ElementsResponse<T extends Collection> = Models.Document & Elements[T];
+export type ElementsResponse<T extends Collection> = Models.Document &
+  Elements[T];

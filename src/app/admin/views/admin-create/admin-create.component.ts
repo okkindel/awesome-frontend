@@ -1,7 +1,7 @@
 import { LibraryTechnology, LibraryType, Library } from '@api/models';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Component, inject } from '@angular/core';
-import { ElementsService } from '@api/services';
+import { DatabaseService } from '@api/services';
 import { Router } from '@angular/router';
 import { toast } from 'ngx-sonner';
 
@@ -9,7 +9,7 @@ import { toast } from 'ngx-sonner';
   templateUrl: './admin-create.component.html',
 })
 export class AdminCreateComponent {
-  private readonly _elementsService = inject(ElementsService);
+  private readonly _databaseService = inject(DatabaseService);
   private readonly _router = inject(Router);
 
   public readonly technologies = Object.values(LibraryTechnology);
@@ -30,7 +30,7 @@ export class AdminCreateComponent {
   public onSubmit(): void {
     const formValue = this.form.getRawValue() as Library;
 
-    this._elementsService.createElement('library', formValue).subscribe({
+    this._databaseService.createElement('library', formValue).subscribe({
       next: () => {
         this._router.navigate(['/', 'admin']);
       },

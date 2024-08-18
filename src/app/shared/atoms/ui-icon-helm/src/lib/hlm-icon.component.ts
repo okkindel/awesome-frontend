@@ -96,6 +96,11 @@ export class HlmIconComponent implements OnDestroy {
   }
 
   @Input()
+  public set untypedName(value: string) {
+    this._name.set(value);
+  }
+
+  @Input()
   public set size(value: number | string) {
     this._size.set(Number(value));
   }

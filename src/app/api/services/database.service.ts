@@ -11,7 +11,7 @@ import { type Models } from 'appwrite';
 import { AppwriteService } from './appwrite.service';
 
 @Injectable()
-export class ElementsService {
+export class DatabaseService {
   private readonly _appwriteService = inject(AppwriteService);
 
   public getElements<T extends Collection>(
