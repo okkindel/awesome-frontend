@@ -11,6 +11,5 @@ export type Elements = {
 };
 
 export type Collection = keyof typeof ElementsDictionary;
-export type ElementsResponse<T extends Collection> = Models.Document &
-  Elements[T];
 export type Dto<T extends Elements[keyof Elements]> = Models.Document & T;
+export type Response<T extends Collection> = Dto<Elements[T]>;

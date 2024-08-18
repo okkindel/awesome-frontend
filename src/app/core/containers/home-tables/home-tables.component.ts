@@ -70,7 +70,7 @@ export class HomeTablesComponent {
   private readonly _databaseService = inject(DatabaseService);
 
   public readonly query = injectQuery(() => ({
-    queryKey: ['libraries'],
+    queryKey: ['libraries-records'],
     queryFn: (): Promise<Record<LibraryType, Dto<Library>[]>> =>
       this._databaseService
         .list('library', [Query.limit(1000)])
