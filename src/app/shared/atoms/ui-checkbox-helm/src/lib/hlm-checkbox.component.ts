@@ -96,7 +96,7 @@ export class HlmCheckboxComponent {
   protected readonly _disabled = signal(false);
   public readonly disabled = input(false, { transform: booleanAttribute });
 
-  private disableInput = effect(
+  private _disableInput = effect(
     () => {
       this._disabled.set(this.disabled());
     },

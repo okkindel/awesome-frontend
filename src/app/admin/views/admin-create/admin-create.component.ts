@@ -30,7 +30,7 @@ export class AdminCreateComponent {
   public onSubmit(): void {
     const formValue = this.form.getRawValue() as Library;
 
-    this._databaseService.createElement('library', formValue).subscribe({
+    this._databaseService.add('library', formValue).subscribe({
       next: () => {
         this._router.navigate(['/', 'admin']);
       },

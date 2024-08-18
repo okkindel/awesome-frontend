@@ -8,6 +8,7 @@ import { HlmLabelDirective } from './ui-label-helm/src';
 import { HlmButtonModule } from './ui-button-helm/src';
 import { HlmSelectModule } from './ui-select-helm/src';
 import { HlmInputModule } from './ui-input-helm/src';
+import { HlmTableModule } from './ui-table-helm/src';
 import { HlmIconModule } from './ui-icon-helm/src';
 
 const ATOMS = [
@@ -19,6 +20,7 @@ const ATOMS = [
   HlmSelectModule,
   HlmButtonModule,
   HlmInputModule,
+  HlmTableModule,
   HlmIconModule,
 ];
 

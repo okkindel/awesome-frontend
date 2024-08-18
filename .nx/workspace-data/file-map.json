@@ -40,18 +40,10 @@
     "typescript": "~5.5.2"
   },
   "pathMappings": {
-    "@environments/*": [
-      "./src/environments/*"
-    ],
-    "@shared/*": [
-      "./src/app/shared/*"
-    ],
-    "@core/*": [
-      "./src/app/core/*"
-    ],
-    "@auth/*": [
-      "./src/app/auth/*"
-    ]
+    "@environments/*": ["./src/environments/*"],
+    "@shared/*": ["./src/app/shared/*"],
+    "@core/*": ["./src/app/core/*"],
+    "@auth/*": ["./src/app/auth/*"]
   },
   "nxJsonPlugins": [],
   "fileMap": {

@@ -14,28 +14,35 @@ import { AppwriteService } from './appwrite.service';
 export class DatabaseService {
   private readonly _appwriteService = inject(AppwriteService);
 
-  public getElements<T extends Collection>(
+  public list<T extends Collection>(
     collection: T,
+    queries?: string[],
   ): Observable<Models.DocumentList<ElementsResponse<T>>> {
     const id = ElementsDictionary[collection];
 
     return from(
-      this._appwriteService.databases.listDocuments('elements', id),
+      this._appwriteService.databases.listDocuments('elements', id, queries),
     ) as Observable<Models.DocumentList<ElementsResponse<T>>>;
   }
 
-  public getElement<T extends Collection>(
+  public get<T extends Collection>(
     collection: T,
     documentId: string,
+    queries?: string[],
   ): Observable<ElementsResponse<T>> {
     const id = ElementsDictionary[collection];
 
     return from(
-      this._appwriteService.databases.getDocument('elements', id, documentId),
+      this._appwriteService.databases.getDocument(
+        'elements',
+        id,
+        documentId,
+        queries,
+      ),
     ) as Observable<ElementsResponse<T>>;
   }
 
-  public createElement<T extends Collection>(
+  public add<T extends Collection>(
     collection: T,
     data: Elements[T],
   ): Observable<ElementsResponse<T>> {
@@ -50,5 +57,37 @@ export class DatabaseService {
         data,
       ),
     ) as Observable<ElementsResponse<T>>;
+  }
+
+  public update<T extends Collection>(
+    collection: T,
+    documentId: string,
+    data: Elements[T],
+  ): Observable<ElementsResponse<T>> {
+    const id = ElementsDictionary[collection];
+
+    return from(
+      this._appwriteService.databases.updateDocument(
+        'elements',
+        id,
+        documentId,
+        data,
+      ),
+    ) as Observable<ElementsResponse<T>>;
+  }
+
+  public remove<T extends Collection>(
+    collection: T,
+    documentId: string,
+  ): Observable<unknown> {
+    const id = ElementsDictionary[collection];
+
+    return from(
+      this._appwriteService.databases.deleteDocument(
+        'elements',
+        id,
+        documentId,
+      ),
+    ) as Observable<unknown>;
   }
 }
