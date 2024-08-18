@@ -13,14 +13,12 @@ import { DatabaseService, UserService } from '../api/services';
 
 const routes: Routes = [
   {
-    canActivate: [
-      (): Observable<boolean> => {
-        const userService = inject(UserService);
-        return userService.user$.pipe(map((user) => !!user));
-      },
-    ],
     path: 'admin',
     component: AdminComponent,
+    canActivate: [
+      (): Observable<boolean> =>
+        inject(UserService).user$.pipe(map((user) => !!user)),
+    ],
     children: [
       {
         path: 'list',
@@ -32,14 +30,11 @@ const routes: Routes = [
       },
       {
         path: 'update/:id',
-        resolve: {
-          data: (route: ActivatedRouteSnapshot): Observable<Dto<Library>> => {
-            const id = route.params['id'];
-            const dbService = inject(DatabaseService);
-            return dbService.get('library', id);
-          },
-        },
         component: AdminUpdateComponent,
+        resolve: {
+          data: (route: ActivatedRouteSnapshot): Promise<Dto<Library>> =>
+            inject(DatabaseService).get('library', route.params['id']),
+        },
       },
       {
         path: '',

@@ -4,8 +4,8 @@ import {
   Collection,
   Elements,
 } from '@api/models';
+import { environment } from '@environments/environment';
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
 import { type Models } from 'appwrite';
 
 import { AppwriteService } from './appwrite.service';
@@ -17,77 +17,60 @@ export class DatabaseService {
   public list<T extends Collection>(
     collection: T,
     queries?: string[],
-  ): Observable<Models.DocumentList<ElementsResponse<T>>> {
-    const id = ElementsDictionary[collection];
-
-    return from(
-      this._appwriteService.databases.listDocuments('elements', id, queries),
-    ) as Observable<Models.DocumentList<ElementsResponse<T>>>;
+  ): Promise<Models.DocumentList<ElementsResponse<T>>> {
+    return this._appwriteService.databases.listDocuments(
+      environment.appwrite.database,
+      ElementsDictionary[collection],
+      queries,
+    ) as Promise<Models.DocumentList<ElementsResponse<T>>>;
   }
 
   public get<T extends Collection>(
     collection: T,
     documentId: string,
     queries?: string[],
-  ): Observable<ElementsResponse<T>> {
-    const id = ElementsDictionary[collection];
-
-    return from(
-      this._appwriteService.databases.getDocument(
-        'elements',
-        id,
-        documentId,
-        queries,
-      ),
-    ) as Observable<ElementsResponse<T>>;
+  ): Promise<ElementsResponse<T>> {
+    return this._appwriteService.databases.getDocument(
+      environment.appwrite.database,
+      ElementsDictionary[collection],
+      documentId,
+      queries,
+    ) as Promise<ElementsResponse<T>>;
   }
 
   public add<T extends Collection>(
     collection: T,
-    data: Elements[T],
-  ): Observable<ElementsResponse<T>> {
-    const id = ElementsDictionary[collection];
-    const uuid = this._appwriteService.ID.unique();
-
-    return from(
-      this._appwriteService.databases.createDocument(
-        'elements',
-        id,
-        uuid,
-        data,
-      ),
-    ) as Observable<ElementsResponse<T>>;
+    data: Partial<Omit<Elements[T], keyof Models.Document>>,
+  ): Promise<ElementsResponse<T>> {
+    return this._appwriteService.databases.createDocument(
+      environment.appwrite.database,
+      ElementsDictionary[collection],
+      this._appwriteService.ID.unique(),
+      data,
+    ) as Promise<ElementsResponse<T>>;
   }
 
   public update<T extends Collection>(
     collection: T,
     documentId: string,
-    data: Elements[T],
-  ): Observable<ElementsResponse<T>> {
-    const id = ElementsDictionary[collection];
-
-    return from(
-      this._appwriteService.databases.updateDocument(
-        'elements',
-        id,
-        documentId,
-        data,
-      ),
-    ) as Observable<ElementsResponse<T>>;
+    data: Partial<Omit<Elements[T], keyof Models.Document>>,
+  ): Promise<ElementsResponse<T>> {
+    return this._appwriteService.databases.updateDocument(
+      environment.appwrite.database,
+      ElementsDictionary[collection],
+      documentId,
+      data,
+    ) as Promise<ElementsResponse<T>>;
   }
 
   public remove<T extends Collection>(
     collection: T,
     documentId: string,
-  ): Observable<unknown> {
-    const id = ElementsDictionary[collection];
-
-    return from(
-      this._appwriteService.databases.deleteDocument(
-        'elements',
-        id,
-        documentId,
-      ),
-    ) as Observable<unknown>;
+  ): Promise<unknown> {
+    return this._appwriteService.databases.deleteDocument(
+      environment.appwrite.database,
+      ElementsDictionary[collection],
+      documentId,
+    ) as Promise<unknown>;
   }
 }

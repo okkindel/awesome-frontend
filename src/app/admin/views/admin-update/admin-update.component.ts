@@ -1,7 +1,8 @@
+import { injectMutation } from '@tanstack/angular-query-experimental';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { DatabaseService } from '@api/services';
-import { Library } from '@api/models';
+import { Library, Dto } from '@api/models';
 import { toast } from 'ngx-sonner';
 
 @Component({
@@ -13,7 +14,10 @@ import { toast } from 'ngx-sonner';
       </p>
     </div>
 
-    <cf-element-form [value]="element" (valueChange)="onSubmit($event)" />
+    <cf-element-form
+      [value]="element"
+      (valueChange)="updateMutation.mutate($event)"
+    />
   `,
 })
 export class AdminUpdateComponent {
@@ -21,16 +25,16 @@ export class AdminUpdateComponent {
   private readonly _databaseService = inject(DatabaseService);
   private readonly _router = inject(Router);
 
-  public readonly element = this._data['data'];
+  public readonly element: Dto<Library> = this._data['data'];
 
-  public onSubmit(value: Library): void {
-    this._databaseService.update('library', this.element.$id, value).subscribe({
-      next: () => {
-        this._router.navigate(['/', 'admin']);
-      },
-      error: (error) => {
-        toast(error.message);
-      },
-    });
-  }
+  public readonly updateMutation = injectMutation(() => ({
+    mutationFn: (value: Library): Promise<Dto<Library>> =>
+      this._databaseService.update('library', this.element.$id, value),
+    onSuccess: (): void => {
+      this._router.navigate(['/', 'admin']);
+    },
+    onError: (error): void => {
+      toast(error.message);
+    },
+  }));
 }

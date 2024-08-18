@@ -1,14 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 import { LibraryType, Library, Dto } from '@api/models';
+import { Component, inject } from '@angular/core';
 import { DatabaseService } from '@api/services';
-import { Observable, map, tap } from 'rxjs';
 import { Query } from 'appwrite';
 
 @Component({
   selector: 'cf-home-tables',
   template: `
     <main class="container mx-auto py-8" id="main">
-      @if (!isLoaded()) {
+      @if (!query.isFetched()) {
         @for (_ of [].constructor(5); track $index) {
           <hlm-skeleton class="h-12 w-40" />
           <section class="my-8 grid h-96 grid-cols-2 gap-4 lg:grid-cols-4">
@@ -20,10 +20,7 @@ import { Query } from 'appwrite';
         }
       }
 
-      @for (
-        type of tablesList$ | async | keyvalue: keyValSort;
-        track type.key
-      ) {
+      @for (type of query.data() | keyvalue: keyValSort; track type.key) {
         <h2 class="text-2xl font-semibold">{{ type.key }}</h2>
         <hlm-table class="my-8 w-full">
           <hlm-trow>
@@ -72,25 +69,30 @@ import { Query } from 'appwrite';
 export class HomeTablesComponent {
   private readonly _databaseService = inject(DatabaseService);
 
-  public keyValSort = (_a: { key: string }, _b: { key: string }): number => 0;
-  public isLoaded = signal<boolean>(false);
+  public readonly query = injectQuery(() => ({
+    queryKey: ['libraries'],
+    queryFn: (): Promise<Record<LibraryType, Dto<Library>[]>> =>
+      this._databaseService
+        .list('library', [Query.limit(1000)])
+        .then((res) => res.documents)
+        .then((documents) => {
+          const types = Object.values(LibraryType);
+          const docs = documents
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .sort((a, b) => (a.important ? -1 : b.important ? 1 : 0));
 
-  public readonly tablesList$: Observable<Record<LibraryType, Dto<Library>[]>> =
-    this._databaseService.list('library', [Query.limit(1000)]).pipe(
-      map((list) => {
-        const elements = list.documents
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .sort((a, b) => (a.important ? -1 : b.important ? 1 : 0));
+          return types.reduce(
+            (acc: Record<LibraryType, Dto<Library>[]>, type) => {
+              acc[type] = docs.filter((doc) => doc.type === type);
+              return acc;
+            },
+            {} as Record<LibraryType, Dto<Library>[]>,
+          );
+        }),
+  }));
 
-        const types = Object.values(LibraryType);
-        return types.reduce(
-          (acc: Record<LibraryType, Dto<Library>[]>, type) => {
-            acc[type] = elements.filter((doc) => doc.type === type);
-            return acc;
-          },
-          {} as Record<LibraryType, Dto<Library>[]>,
-        );
-      }),
-      tap(() => this.isLoaded.set(true)),
-    );
+  public readonly keyValSort = (
+    _a: { key: string },
+    _b: { key: string },
+  ): number => 0;
 }

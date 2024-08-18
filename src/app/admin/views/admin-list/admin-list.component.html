@@ -2,7 +2,7 @@
   hlmTable
   class="mt-4 block rounded-md border border-border"
   [displayedColumns]="displayedColumns"
-  [dataSource]="elements"
+  [dataSource]="query.data() || []"
 >
   <brn-column-def name="icon" class="w-20">
     <hlm-th truncate *brnHeaderDef>Icon</hlm-th>
@@ -47,7 +47,7 @@
     <hlm-th *brnHeaderDef>Actions</hlm-th>
     <hlm-td *brnCellDef="let element" class="flex gap-2">
       <button
-        (click)="removeElement(element.$id)"
+        (click)="deleteMutation.mutate(element.$id)"
         variant="outline"
         size="icon"
         hlmButton
@@ -66,6 +66,6 @@
   </brn-column-def>
 
   <div class="flex items-center justify-center p-20" brnNoDataRow>
-    {{ isLoaded() ? 'No data' : 'Loading...' }}
+    {{ query.isLoading() ? 'Loading...' : 'No data' }}
   </div>
 </brn-table>

@@ -1,7 +1,8 @@
+import { injectMutation } from '@tanstack/angular-query-experimental';
 import { Component, inject } from '@angular/core';
 import { DatabaseService } from '@api/services';
+import { Library, Dto } from '@api/models';
 import { Router } from '@angular/router';
-import { Library } from '@api/models';
 import { toast } from 'ngx-sonner';
 
 @Component({
@@ -13,21 +14,21 @@ import { toast } from 'ngx-sonner';
       </p>
     </div>
 
-    <cf-element-form (valueChange)="onSubmit($event)" />
+    <cf-element-form (valueChange)="createMutation.mutate($event)" />
   `,
 })
 export class AdminCreateComponent {
   private readonly _databaseService = inject(DatabaseService);
   private readonly _router = inject(Router);
 
-  public onSubmit(value: Library): void {
-    this._databaseService.add('library', value).subscribe({
-      next: () => {
-        this._router.navigate(['/', 'admin']);
-      },
-      error: (error) => {
-        toast(error.message);
-      },
-    });
-  }
+  public readonly createMutation = injectMutation(() => ({
+    mutationFn: (value: Library): Promise<Dto<Library>> =>
+      this._databaseService.add('library', value),
+    onSuccess: (): void => {
+      this._router.navigate(['/', 'admin']);
+    },
+    onError: (error): void => {
+      toast(error.message);
+    },
+  }));
 }

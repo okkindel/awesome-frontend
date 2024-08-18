@@ -50,6 +50,7 @@
     "@spartan-ng/ui-tabs-brain": "0.0.1-alpha.353",
     "@spartan-ng/ui-toggle-brain": "0.0.1-alpha.353",
     "@spartan-ng/ui-tooltip-brain": "0.0.1-alpha.353",
+    "@tanstack/angular-query-experimental": "^5.51.22",
     "appwrite": "^15.0.0",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
