@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cool-frontend": {
+    "awesome-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -32,7 +32,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cool-frontend",
+            "outputPath": "dist/awesome-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cool-frontend:build:production"
+              "buildTarget": "awesome-frontend:build:production"
             },
             "development": {
-              "buildTarget": "cool-frontend:build:development"
+              "buildTarget": "awesome-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

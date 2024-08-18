@@ -1,8 +1,8 @@
-# Cool Frontend
+# Awesome Frontend
 
 ## Overview
 
-Cool Frontend is a curated collection of essential libraries and tools designed to streamline and enhance the workflow of frontend and fullstack developers. This repository includes a variety of resources, from UI libraries and JavaScript frameworks to development tools and fullstack integrations.
+Awesome Frontend is a curated collection of essential libraries and tools designed to streamline and enhance the workflow of frontend and fullstack developers. This repository includes a variety of resources, from UI libraries and JavaScript frameworks to development tools and fullstack integrations.
 
 ### US / DS
 
