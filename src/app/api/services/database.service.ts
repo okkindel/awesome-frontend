@@ -1,9 +1,4 @@
-import {
-  ElementsDictionary,
-  Collection,
-  Response,
-  Elements,
-} from '@api/models';
+import { DbDictionary, Collection, Response, Database } from '@api/models';
 import { environment } from '@environments/environment';
 import { Injectable, inject } from '@angular/core';
 import { type Models } from 'appwrite';
@@ -20,7 +15,7 @@ export class DatabaseService {
   ): Promise<Models.DocumentList<Response<T>>> {
     return this._appwriteService.databases.listDocuments(
       environment.appwrite.database,
-      ElementsDictionary[collection],
+      DbDictionary[collection],
       queries,
     ) as Promise<Models.DocumentList<Response<T>>>;
   }
@@ -32,7 +27,7 @@ export class DatabaseService {
   ): Promise<Response<T>> {
     return this._appwriteService.databases.getDocument(
       environment.appwrite.database,
-      ElementsDictionary[collection],
+      DbDictionary[collection],
       documentId,
       queries,
     ) as Promise<Response<T>>;
@@ -40,11 +35,11 @@ export class DatabaseService {
 
   public add<T extends Collection>(
     collection: T,
-    data: Partial<Omit<Elements[T], keyof Models.Document>>,
+    data: Partial<Omit<Database[T], keyof Models.Document>>,
   ): Promise<Response<T>> {
     return this._appwriteService.databases.createDocument(
       environment.appwrite.database,
-      ElementsDictionary[collection],
+      DbDictionary[collection],
       this._appwriteService.ID.unique(),
       data,
     ) as Promise<Response<T>>;
@@ -53,11 +48,11 @@ export class DatabaseService {
   public update<T extends Collection>(
     collection: T,
     documentId: string,
-    data: Partial<Omit<Elements[T], keyof Models.Document>>,
+    data: Partial<Omit<Database[T], keyof Models.Document>>,
   ): Promise<Response<T>> {
     return this._appwriteService.databases.updateDocument(
       environment.appwrite.database,
-      ElementsDictionary[collection],
+      DbDictionary[collection],
       documentId,
       data,
     ) as Promise<Response<T>>;
@@ -69,7 +64,7 @@ export class DatabaseService {
   ): Promise<unknown> {
     return this._appwriteService.databases.deleteDocument(
       environment.appwrite.database,
-      ElementsDictionary[collection],
+      DbDictionary[collection],
       documentId,
     ) as Promise<unknown>;
   }
