@@ -36,12 +36,14 @@ export class DatabaseService {
   public add<T extends Collection>(
     collection: T,
     data: Partial<Omit<Database[T], keyof Models.Document>>,
+    permissions?: string[],
   ): Promise<Response<T>> {
     return this._appwriteService.databases.createDocument(
       environment.appwrite.database,
       DbDictionary[collection],
       this._appwriteService.ID.unique(),
       data,
+      permissions,
     ) as Promise<Response<T>>;
   }
 
@@ -49,12 +51,14 @@ export class DatabaseService {
     collection: T,
     documentId: string,
     data: Partial<Omit<Database[T], keyof Models.Document>>,
+    permissions?: string[],
   ): Promise<Response<T>> {
     return this._appwriteService.databases.updateDocument(
       environment.appwrite.database,
       DbDictionary[collection],
       documentId,
       data,
+      permissions,
     ) as Promise<Response<T>>;
   }
 
