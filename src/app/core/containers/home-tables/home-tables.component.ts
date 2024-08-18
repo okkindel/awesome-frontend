@@ -35,7 +35,9 @@ import { Query } from 'appwrite';
           @for (element of type.value; track element.$id) {
             <hlm-trow>
               <hlm-td truncate class="w-12 p-2 lg:w-20 lg:p-4">
-                <img [src]="element.icon" class="size-8" />
+                @if (element.icon) {
+                  <img [src]="element.icon" class="size-8" />
+                }
               </hlm-td>
               <hlm-td class="w-32 lg:w-64">
                 <a
