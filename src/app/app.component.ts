@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
+  host: { class: 'h-screen block' },
   selector: 'cf-root',
-  host: {
-    class: 'h-full',
-  },
   template: `
     <hlm-toaster />
     <router-outlet />
