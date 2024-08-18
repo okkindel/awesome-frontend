@@ -10,15 +10,15 @@ export class TechnologyBadgeDirective {
   @HostBinding('class') public get classes(): string {
     switch (this.type()) {
       case LibraryTechnology.Angular:
-        return 'text-red-500';
+        return '!text-red-500';
       case LibraryTechnology.React:
-        return 'text-indigo-500';
+        return '!text-indigo-500';
       case LibraryTechnology['JS/TS']:
-        return 'text-yellow-500';
+        return '!text-yellow-500';
       case LibraryTechnology.Tailwind:
-        return 'text-sky-300';
+        return '!text-sky-300';
       default:
-        return 'text-gray-300';
+        return '!text-gray-300';
     }
   }
 }
