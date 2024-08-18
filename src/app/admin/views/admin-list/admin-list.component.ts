@@ -1,5 +1,5 @@
-import { LibraryType, Document, Library } from '@api/models';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { LibraryType, Library, DTO } from '@api/models';
 import { DatabaseService } from '@api/services';
 import { Query } from 'appwrite';
 
@@ -9,17 +9,12 @@ const TYPE_ORDER = Object.values(LibraryType);
   templateUrl: './admin-list.component.html',
 })
 export class AdminListComponent implements OnInit {
+  // prettier-ignore
+  public readonly displayedColumns = ['icon', 'technology', 'name', 'description', 'type', 'actions'];
   private readonly _databaseService = inject(DatabaseService);
-  public elements: Document<Library>[] = [];
 
-  public readonly displayedColumns = [
-    'icon',
-    'technology',
-    'name',
-    'description',
-    'type',
-    'actions',
-  ];
+  public isLoaded = signal<boolean>(false);
+  public elements: DTO<Library>[] = [];
 
   public ngOnInit(): void {
     this._fetchElements();
@@ -32,6 +27,7 @@ export class AdminListComponent implements OnInit {
   }
 
   private _fetchElements(): void {
+    this.isLoaded.set(false);
     this._databaseService
       .list('library', [Query.limit(1000)])
       .subscribe((res) => {
@@ -41,6 +37,7 @@ export class AdminListComponent implements OnInit {
           .sort(
             (a, b) => TYPE_ORDER.indexOf(a.type) - TYPE_ORDER.indexOf(b.type),
           );
+        this.isLoaded.set(true);
       });
   }
 }

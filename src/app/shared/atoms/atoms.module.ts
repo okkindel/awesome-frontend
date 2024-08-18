@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { HlmFormFieldModule } from './ui-formfield-helm/src';
 import { HlmCheckboxModule } from './ui-checkbox-helm/src';
+import { HlmSkeletonModule } from './ui-skeleton-helm/src';
 import { HlmSpinnerModule } from './ui-spinner-helm/src';
 import { HlmToasterModule } from './ui-sonner-helm/src';
 import { HlmLabelDirective } from './ui-label-helm/src';
@@ -15,6 +16,7 @@ const ATOMS = [
   HlmFormFieldModule,
   HlmLabelDirective,
   HlmCheckboxModule,
+  HlmSkeletonModule,
   HlmSpinnerModule,
   HlmToasterModule,
   HlmSelectModule,

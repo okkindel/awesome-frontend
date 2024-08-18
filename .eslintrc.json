@@ -51,6 +51,10 @@
         "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+        ],
         "@typescript-eslint/explicit-member-accessibility": [
           "warn",
           { "overrides": { "constructors": "no-public" } }
