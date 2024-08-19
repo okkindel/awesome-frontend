@@ -14,7 +14,7 @@ export class DatabaseService {
     queries?: string[],
   ): Promise<Models.DocumentList<Response<T>>> {
     return this._appwriteService.databases.listDocuments(
-      environment.appwrite.database,
+      environment.appwrite.database_id,
       DbDictionary[collection],
       queries,
     ) as Promise<Models.DocumentList<Response<T>>>;
@@ -26,7 +26,7 @@ export class DatabaseService {
     queries?: string[],
   ): Promise<Response<T>> {
     return this._appwriteService.databases.getDocument(
-      environment.appwrite.database,
+      environment.appwrite.database_id,
       DbDictionary[collection],
       documentId,
       queries,
@@ -39,7 +39,7 @@ export class DatabaseService {
     permissions?: string[],
   ): Promise<Response<T>> {
     return this._appwriteService.databases.createDocument(
-      environment.appwrite.database,
+      environment.appwrite.database_id,
       DbDictionary[collection],
       this._appwriteService.ID.unique(),
       data,
@@ -54,7 +54,7 @@ export class DatabaseService {
     permissions?: string[],
   ): Promise<Response<T>> {
     return this._appwriteService.databases.updateDocument(
-      environment.appwrite.database,
+      environment.appwrite.database_id,
       DbDictionary[collection],
       documentId,
       data,
@@ -67,7 +67,7 @@ export class DatabaseService {
     documentId: string,
   ): Promise<unknown> {
     return this._appwriteService.databases.deleteDocument(
-      environment.appwrite.database,
+      environment.appwrite.database_id,
       DbDictionary[collection],
       documentId,
     ) as Promise<unknown>;
