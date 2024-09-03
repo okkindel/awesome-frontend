@@ -11,7 +11,7 @@
     "check:format": "prettier --check src",
     "lint:fix": "ng lint --fix",
     "format:fix": "npm run lint:fix && prettier --write .",
-    "codegen": "appwrite-typescript --config .env.json -d src/app/api/models -o entities.d.ts"
+    "codegen": "appwrite-typescript --config .env.json -d src/app/api/models -o database.model.ts"
   },
   "private": true,
   "dependencies": {

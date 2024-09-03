@@ -1,1 +1,1 @@
-src/app/api/models/*.d.ts
+src/app/api/models/database.model.ts

@@ -1,6 +1,6 @@
 import type { Models } from 'appwrite';
 
-export const LibrariesType = {
+export const LibraryType = {
   'UX/UI': 'UX/UI',
   'CSS': 'CSS',
   'FETCHING': 'FETCHING',
@@ -16,9 +16,9 @@ export const LibrariesType = {
   'GITHUB': 'GITHUB',
 } as const;
 
-export type LibrariesType = (typeof LibrariesType)[keyof typeof LibrariesType];
+export type LibraryType = (typeof LibraryType)[keyof typeof LibraryType];
 
-export const LibrariesTechnology = {
+export const LibraryTechnology = {
   'JS/TS': 'JS/TS',
   'Angular': 'Angular',
   'React': 'React',
@@ -26,14 +26,14 @@ export const LibrariesTechnology = {
   'Other': 'Other',
 } as const;
 
-export type LibrariesTechnology = (typeof LibrariesTechnology)[keyof typeof LibrariesTechnology];
+export type LibraryTechnology = (typeof LibraryTechnology)[keyof typeof LibraryTechnology];
 
-export interface Libraries extends Partial<Models.Document> {
+export interface Library extends Partial<Models.Document> {
   description: string;
   name: string;
-  type: LibrariesType;
+  type: LibraryType;
   icon?: string;
-  technology: LibrariesTechnology;
+  technology: LibraryTechnology;
   url: string;
   important?: boolean;
 }
