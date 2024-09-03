@@ -10,7 +10,8 @@
     "check:types": "tsc --pretty --noEmit",
     "check:format": "prettier --check src",
     "lint:fix": "ng lint --fix",
-    "format:fix": "npm run lint:fix && prettier --write ."
+    "format:fix": "npm run lint:fix && prettier --write .",
+    "codegen": "appwrite-typescript --config .env.json -d src/app/api/models -o entities.d.ts"
   },
   "private": true,
   "dependencies": {
@@ -74,6 +75,8 @@
     "@spartan-ng/cli": "0.0.1-alpha.361",
     "@typescript-eslint/eslint-plugin": "6.13.1",
     "@typescript-eslint/parser": "6.13.1",
+    "appwrite-typer": "0.0.1",
+    "appwrite-typescript": "0.0.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.54.0",
     "eslint-plugin-perfectionist": "^2.5.0",

@@ -1,1 +1,1 @@
-src/app/shared/models/codegen/*
+src/app/api/models/*.d.ts

@@ -44,4 +44,5 @@ testem.log
 Thumbs.db
 
 # Environment
-/src/environments
+.env.json
+

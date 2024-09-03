@@ -1,3 +1,2 @@
-export * from './entities/library.type';
-
 export * from './entities.type';
+export * from './entities';

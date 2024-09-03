@@ -1,11 +1,4 @@
-import {
-  EventEmitter,
-  DestroyRef,
-  Component,
-  inject,
-  Output,
-  Input,
-} from '@angular/core';
+import { EventEmitter, Component, Output, Input } from '@angular/core';
 import { LibraryTechnology, LibraryType, Library } from '@api/models';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
@@ -14,8 +7,6 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   templateUrl: './element-form.component.html',
 })
 export class ElementFormComponent {
-  private readonly _destroyRef = inject(DestroyRef);
-
   public readonly technologies = Object.values(LibraryTechnology);
   public readonly types = Object.values(LibraryType);
 
